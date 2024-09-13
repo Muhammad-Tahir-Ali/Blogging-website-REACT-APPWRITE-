@@ -15,12 +15,6 @@ export class AuthService {
     this.account = new Account(this.client);
   }
 
-  /**
-   * Creates a new account
-   * @param {Object} data - contains email, password and name of the user
-   * @returns {Promise} - resolves with the created user account
-   * @memberof AuthService
-   */
   async createAccount({ email, password, name }) {
     try {
       const UserAccoint = await this.account.create(
@@ -40,12 +34,7 @@ export class AuthService {
     }
   }
 
-  /**
-   * Logs the user in
-   * @param {Object} data - contains email and password of the user
-   * @returns {Promise} - resolves with the logged in user account
-   * @memberof AuthService
-   */
+  
   async login({ email, password }) {
     try {
       return await this.account.createEmailSession(email, password);
@@ -54,11 +43,7 @@ export class AuthService {
     }
   }
 
-  /**
-   * Gets the current logged in user
-   * @returns {Promise} - resolves with the current user account
-   * @memberof AuthService
-   */
+  
   async getCurrentUser() {
     try {
       return await this.account.get();
@@ -68,11 +53,7 @@ export class AuthService {
     return null;
   }
 
-  /**
-   * Logs the user out
-   * @returns {Promise} - resolves when the user is logged out
-   * @memberof AuthService
-   */
+ 
   async logout() {
     try {
       return await this.account.deleteSession("current");
